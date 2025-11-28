@@ -185,8 +185,7 @@ def admin_page():
                 for r in current_rules:
                     rules_data.append({
                         "Gejala": r['symptom_name'],
-                        "Bobot": r['weight'],
-                        "Action": "Delete" # Placeholder
+                        "Bobot": r.get('weight', 0.5),  # Handle if weight is missing temporarily
                     })
                 st.dataframe(pd.DataFrame(rules_data))
                 
@@ -207,7 +206,7 @@ def admin_page():
             
             with st.form("add_rule"):
                 symptom_to_add = st.selectbox("Pilih Gejala", [s['id'] for s in symptoms], format_func=lambda x: next(s['name'] for s in symptoms if s['id'] == x))
-                weight = st.slider("Bobot (Weight)", 0.0, 1.0, 0.5, 0.1)
+                weight = st.slider("Bobot (Weight)", 0.1, 1.0, 0.5, 0.1)
                 
                 submit_rule = st.form_submit_button("Simpan Rule")
                 
