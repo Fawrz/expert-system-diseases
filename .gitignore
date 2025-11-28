@@ -1,0 +1,23 @@
+# Virtual Environment
+.venv
+venv/
+env/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# Secrets & Config
+.streamlit/secrets.toml
+
+# Local Database
+*.db
+*.sqlite3
+
+# System Trash
+.DS_Store
+Thumbs.db
+
+# Backup Folders
+backup_local/
+legacy/
